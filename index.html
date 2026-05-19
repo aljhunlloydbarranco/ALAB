@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aljhun Lloyd A. Barranco, RFP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #141c14;
+      --mid:        #3d4f3d;
+      --muted:      #6b7f6b;
+      --rule:       #d4ddd4;
+      --bg:         #f6f8f5;
+      --bg-card:    #ffffff;
+      --accent:     #2d5a27;
+      --accent-lt:  #3f7a38;
+      --accent-pale:#edf4ec;
+      --gold:       #8a6c1a;
+      --gold-pale:  #fdf8ec;
+      --serif:      'Cormorant Garamond', Georgia, serif;
+      --sans:       'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(246,248,245,0.93);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 max(2rem, calc(50% - 440px));
+      display: flex; align-items: center; justify-content: space-between;
+      height: 58px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem; font-weight: 500;
+      color: var(--ink); text-decoration: none;
+      letter-spacing: 0.015em;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2.25rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* WRAP */
+    .wrap { max-width: 880px; margin: 0 auto; padding: 0 2rem; }
+
+    /* HERO */
+    .hero {
+      padding: 5.5rem 0 4rem;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 3rem;
+      align-items: start;
+      animation: fadeUp 0.65s ease both;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.9rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: inline-block;
+      width: 28px; height: 1px; background: var(--accent);
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5.5vw, 3.8rem);
+      font-weight: 500; line-height: 1.1;
+      color: var(--ink); margin-bottom: 0.2rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-title-line {
+      font-family: var(--serif);
+      font-size: 1.05rem; font-style: italic;
+      color: var(--muted); margin-bottom: 1.5rem;
+    }
+    .hero-bio {
+      font-size: 0.95rem; color: var(--mid);
+      max-width: 500px; line-height: 1.82;
+      margin-bottom: 1.75rem;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; gap: 0.45rem;
+      margin-bottom: 2rem;
+    }
+    .badge {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 0.28rem 0.75rem; border-radius: 2px;
+      background: var(--accent-pale); color: var(--accent);
+      border: 1px solid #b8d4b5;
+    }
+    .badge.gold {
+      background: var(--gold-pale); color: var(--gold);
+      border-color: #d4b96a;
+    }
+    .hero-cta { display: flex; gap: 0.85rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-family: var(--sans); font-size: 0.8rem;
+      font-weight: 500; letter-spacing: 0.06em;
+      padding: 0.62rem 1.5rem; border-radius: 2px;
+      text-decoration: none; cursor: pointer;
+      transition: all 0.2s; border: 1.5px solid transparent;
+    }
+    .btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-primary:hover { background: #214020; border-color: #214020; }
+    .btn-outline { background: transparent; color: var(--accent); border-color: var(--accent); }
+    .btn-outline:hover { background: var(--accent-pale); }
+
+    /* PHOTO */
+    .hero-photo-wrap { position: relative; }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; top: 10px; left: 10px;
+      width: 100%; height: 100%;
+      border: 1.5px solid var(--accent); border-radius: 3px;
+      opacity: 0.35; z-index: 0;
+    }
+    .hero-photo {
+      position: relative; z-index: 1;
+      width: 100%; aspect-ratio: 3/4;
+      object-fit: cover; object-position: top center;
+      border-radius: 3px; display: block;
+      border: 2px solid var(--bg-card);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    }
+    .hero-photo-placeholder {
+      position: relative; z-index: 1;
+      width: 100%; aspect-ratio: 3/4; border-radius: 3px;
+      background: linear-gradient(160deg, var(--accent) 0%, #4a9040 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 4rem;
+      color: rgba(255,255,255,0.75); font-style: italic;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+    }
+
+    /* DIVIDER */
+    hr.rule {
+      border: none; border-top: 1px solid var(--rule);
+      max-width: 880px; margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* SECTION */
+    section { padding: 4rem 0; animation: fadeUp 0.65s ease both; }
+    .section-label {
+      font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.3rem;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.9rem; font-weight: 500;
+      color: var(--ink); margin-bottom: 2.25rem;
+    }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .about-block {
+      background: var(--bg-card); border: 1px solid var(--rule);
+      border-radius: 3px; padding: 1.4rem;
+    }
+    .about-block h3 {
+      font-family: var(--serif); font-size: 1.05rem;
+      font-weight: 500; color: var(--ink); margin-bottom: 0.55rem;
+    }
+    .about-block p, .about-block li { font-size: 0.9rem; color: var(--mid); line-height: 1.75; }
+    .about-block ul { padding-left: 1.1rem; }
+    .about-block li { margin-bottom: 0.2rem; }
+
+    /* CARDS */
+    .cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .card {
+      background: var(--bg-card); border: 1px solid var(--rule);
+      border-radius: 3px; padding: 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.07); transform: translateY(-2px); }
+    .card-icon { font-size: 1.35rem; margin-bottom: 0.8rem; }
+    .card h3 {
+      font-family: var(--serif); font-size: 1.05rem;
+      font-weight: 500; color: var(--ink); margin-bottom: 0.45rem;
+    }
+    .card p { font-size: 0.88rem; color: var(--mid); line-height: 1.72; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+    .tag {
+      font-size: 0.69rem; font-weight: 500; letter-spacing: 0.04em;
+      padding: 0.2rem 0.55rem; border-radius: 2px;
+      background: var(--accent-pale); color: var(--accent);
+    }
+    .tag.gold { background: var(--gold-pale); color: var(--gold); }
+
+    /* PUBLICATION */
+    .pub-card {
+      background: var(--bg-card); border: 1px solid var(--rule); border-radius: 3px;
+      padding: 1.75rem 2rem; display: grid;
+      grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;
+    }
+    .pub-num {
+      font-family: var(--serif); font-size: 2.5rem;
+      font-weight: 500; color: var(--rule); line-height: 1;
+    }
+    .pub-content cite {
+      font-style: italic; font-family: var(--serif);
+      font-size: 1.1rem; color: var(--ink);
+      display: block; margin-bottom: 0.45rem; line-height: 1.45;
+    }
+    .pub-journal { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.65rem; }
+    .pub-content a {
+      font-size: 0.8rem; color: var(--accent);
+      text-decoration: none; font-weight: 500;
+      border-bottom: 1px solid transparent; transition: border-color 0.2s;
+    }
+    .pub-content a:hover { border-color: var(--accent); }
+
+    /* TIMELINE */
+    .timeline { display: flex; flex-direction: column; }
+    .tl-item {
+      display: grid; grid-template-columns: 120px 24px 1fr;
+      gap: 0 1.25rem;
+    }
+    .tl-year {
+      font-size: 0.78rem; font-weight: 500; color: var(--muted);
+      text-align: right; padding-top: 0.15rem; white-space: nowrap;
+    }
+    .tl-spine { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 0.18rem;
+    }
+    .tl-line { flex: 1; width: 1px; background: var(--rule); margin-top: 4px; }
+    .tl-item:last-child .tl-line { display: none; }
+    .tl-body { padding-bottom: 2rem; }
+    .tl-inst {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 0.2rem;
+    }
+    .tl-body h3 {
+      font-family: var(--serif); font-size: 1.05rem;
+      font-weight: 500; color: var(--ink); margin-bottom: 0.3rem;
+    }
+    .tl-body p { font-size: 0.88rem; color: var(--mid); line-height: 1.7; }
+    .honor {
+      display: inline-block; font-size: 0.72rem; font-weight: 500;
+      padding: 0.18rem 0.6rem; border-radius: 2px;
+      background: var(--gold-pale); color: var(--gold);
+      border: 1px solid #d4b96a; margin-top: 0.5rem;
+    }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+    .skill-block {
+      background: var(--bg-card); border: 1px solid var(--rule);
+      border-radius: 3px; padding: 1.3rem;
+    }
+    .skill-block h4 {
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.8rem; padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .skill-list { list-style: none; }
+    .skill-list li {
+      font-size: 0.87rem; color: var(--mid);
+      padding: 0.3rem 0; border-bottom: 1px solid var(--bg);
+    }
+    .skill-list li:last-child { border-bottom: none; }
+
+    /* AWARDS */
+    .awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .award-item {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      background: var(--bg-card); border: 1px solid var(--rule);
+      border-radius: 3px; padding: 1rem 1.1rem;
+    }
+    .award-icon { font-size: 1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .award-name { font-size: 0.9rem; color: var(--ink); font-weight: 500; }
+    .award-year { font-size: 0.78rem; color: var(--muted); }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+    .contact-info p { font-size: 0.93rem; color: var(--mid); line-height: 1.8; margin-bottom: 1.5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 0.7rem; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.7rem;
+      font-size: 0.88rem; color: var(--mid); text-decoration: none; transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-icon {
+      width: 30px; height: 30px; border-radius: 3px;
+      background: var(--accent-pale); color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; flex-shrink: 0;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-form input, .contact-form textarea {
+      font-family: var(--sans); font-size: 0.88rem;
+      padding: 0.65rem 0.9rem; border: 1px solid var(--rule);
+      border-radius: 2px; background: var(--bg-card);
+      color: var(--ink); outline: none; transition: border-color 0.2s; resize: vertical;
+    }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--accent); }
+    .contact-form textarea { min-height: 110px; }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 0; margin-top: 0;
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--muted);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* GALLERY */
+    .gallery-filters {
+      display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.75rem;
+    }
+    .filter-btn {
+      font-family: var(--sans); font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.4rem 1rem; border-radius: 2px; cursor: pointer;
+      border: 1.5px solid var(--rule); background: var(--bg-card);
+      color: var(--muted); transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent); color: #fff; border-color: var(--accent);
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .gallery-item {
+      position: relative; border-radius: 3px; overflow: hidden;
+      border: 1px solid var(--rule); cursor: pointer;
+      aspect-ratio: 4/3;
+      background: var(--bg-card);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-item:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 0.5rem;
+      background: var(--bg); border: 2px dashed var(--rule);
+    }
+    .gallery-placeholder .ph-icon { font-size: 1.75rem; opacity: 0.4; }
+    .gallery-placeholder .ph-label {
+      font-size: 0.75rem; color: var(--muted);
+      text-align: center; padding: 0 0.5rem; line-height: 1.4;
+    }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(20,28,20,0.75) 0%, transparent 55%);
+      opacity: 0; transition: opacity 0.25s;
+      display: flex; align-items: flex-end; padding: 0.85rem;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay-text {
+      font-size: 0.8rem; font-weight: 500; color: #fff;
+      line-height: 1.35;
+    }
+    .gallery-overlay-tag {
+      font-size: 0.65rem; color: rgba(255,255,255,0.7);
+      text-transform: uppercase; letter-spacing: 0.07em;
+      display: block; margin-bottom: 0.2rem;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(10,14,10,0.93);
+      display: none; align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 90vw; max-height: 85vh;
+      border-radius: 3px; object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .lightbox-close {
+      position: absolute; top: 1.25rem; right: 1.5rem;
+      font-size: 1.75rem; color: rgba(255,255,255,0.7);
+      cursor: pointer; background: none; border: none;
+      line-height: 1; transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: #fff; }
+    .lightbox-caption {
+      position: absolute; bottom: 1.5rem; left: 50%;
+      transform: translateX(-50%);
+      text-align: center; color: rgba(255,255,255,0.8);
+      font-size: 0.88rem; max-width: 600px; line-height: 1.5;
+    }
+
+    @media (max-width: 680px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-photo-wrap { display: none; }
+      .about-grid, .cards, .skills-grid, .awards-grid, .contact-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .tl-item { grid-template-columns: 70px 20px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Aljhun Lloyd<span>, RFP</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="wrap">
+  <div class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Registered Fisheries Professional · MSU Naawan</p>
+      <h1>Aljhun Lloyd<br>A. Barranco,<br><em>RFP</em></h1>
+      <p class="hero-title-line">Project Technical Assistant I, iAQUA · Assistant Lecturer, CFMS</p>
+      <p class="hero-bio">
+        Fisheries scientist and educator at Mindanao State University at Naawan.
+        My research spans coastal water quality, phytoplankton ecology, aquaculture systems,
+        and green mussel biology — grounded in fieldwork at Tagabuli Bay, Davao del Sur,
+        and driven by a commitment to Philippine coastal resource management.
+      </p>
+      <div class="hero-badges">
+        <span class="badge">Aquaculture Systems</span>
+        <span class="badge">Phytoplankton Ecology</span>
+        <span class="badge">Water Quality & GIS</span>
+        <span class="badge">iAQUA · DOST-PCAARRD</span>
+        <span class="badge gold">VLIR-UOS Scholar 2026–2028</span>
+        <span class="badge gold">Magna Cum Laude · BSF 2024</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#research">View Research</a>
+        <a class="btn btn-outline" href="#cv">Curriculum Vitae</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="photo.png" alt="Aljhun Lloyd A. Barranco, RFP"/>
+    </div>
+  </div>
+</div>
+
+<hr class="rule"/>
+
+<!-- ABOUT -->
+<section id="about" style="animation-delay:0.1s">
+  <div class="wrap">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-block">
+        <h3>Current Roles</h3>
+        <p>I serve as <strong>Project Technical Assistant I</strong> at the iAQUA Research Center
+        (in collaboration with DOST-PCAARRD, since Oct 2024) and as <strong>Assistant Lecturer</strong>
+        in the Department of Fisheries Technology, CFMS, MSU Naawan (since Aug 2025).</p>
+      </div>
+      <div class="about-block">
+        <h3>Academic Achievement</h3>
+        <p>Graduated <strong>Magna Cum Laude</strong> (CGPA: 1.254) with a BS in Fisheries from
+        MSU Naawan, Class of 2024. Passed the Fisheries Licensure Examination with an
+        <strong>88.25% overall rating</strong>, earning the title Registered Fisheries Professional (RFP).</p>
+      </div>
+      <div class="about-block">
+        <h3>Graduate Studies</h3>
+        <p>VLIR-UOS scholar pursuing an <strong>MS in Marine and Lacustrine Science and Management</strong>
+        (2026–2028) at Vrije Universiteit Brussel, Universiteit Antwerpen, and Universiteit Ghent,
+        Belgium — with research interests in advanced aquaculture systems, phytoplankton dynamics,
+        and integrated coastal resource management.</p>
+      </div>
+      <div class="about-block">
+        <h3>Field Sites &amp; Affiliations</h3>
+        <ul>
+          <li>Tagabuli Bay, Davao del Sur (primary field site)</li>
+          <li>iAQUA Research Center, MSU Naawan</li>
+          <li>DOST-PCAARRD collaborative research</li>
+          <li>BFAR Region 12 — FILG Scholarship alumnus</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- RESEARCH -->
+<section id="research" style="animation-delay:0.15s">
+  <div class="wrap">
+    <p class="section-label">Current Work</p>
+    <h2 class="section-title">Research Focus</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">🦐</div>
+        <h3>IMTA &amp; Aquaculture Systems</h3>
+        <p>Integrated Multi-Trophic Aquaculture simulation combining milkfish and extractive
+        species. Modeling involves Monte Carlo simulation, carrying capacity, NPV and break-even
+        financial analysis, Sobol sensitivity, and XGBoost/RF ML feature importance — referencing
+        DENR DAO 2016-08 and BFAR standards.</p>
+        <div class="card-tags">
+          <span class="tag">IMTA</span>
+          <span class="tag">Monte Carlo</span>
+          <span class="tag">R / Shiny</span>
+          <span class="tag">BFAR Standards</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔬</div>
+        <h3>Phytoplankton Community Dynamics</h3>
+        <p>Bimonthly monitoring of phytoplankton at Tagabuli Bay (Dec 2024–Mar 2026; 81 records,
+        9 sampling events). Dominant taxa: <em>Chaetoceros</em>, <em>Skeletonema</em>,
+        <em>Thalassionema</em>, and <em>Ceratium</em>, with a bloom event recorded Aug–Oct 2025.</p>
+        <div class="card-tags">
+          <span class="tag">PERMANOVA</span>
+          <span class="tag">NMDS</span>
+          <span class="tag">Shannon H′</span>
+          <span class="tag gold">Bloom Dynamics</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌊</div>
+        <h3>Coastal Water Quality Monitoring</h3>
+        <p>Spatiotemporal water quality assessment (DO, salinity, pH, temperature) at Tagabuli Bay
+        using Hanna HI98194 meter data, QGIS interpolation and animated spatial maps, and compliance
+        visualization against DENR DAO 2016-08. Includes PST monitoring (FAO 235 Series; 60 µg STX-eq/100g).</p>
+        <div class="card-tags">
+          <span class="tag">QGIS</span>
+          <span class="tag">Spatial Interpolation</span>
+          <span class="tag">DENR DAO 2016-08</span>
+          <span class="tag gold">PST Monitoring</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🐚</div>
+        <h3>Green Mussel Morphometrics</h3>
+        <p>Population-level morphometric analysis of <em>Perna viridis</em> including
+        Kruskal-Wallis &amp; Dunn's post-hoc tests, Spearman correlation, length-weight regression,
+        and PCA biplots — with publication-ready multi-panel R/ggplot2 figures.</p>
+        <div class="card-tags">
+          <span class="tag">Perna viridis</span>
+          <span class="tag">PCA</span>
+          <span class="tag">Length-Weight</span>
+          <span class="tag">R / ggplot2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- PUBLICATIONS -->
+<section id="publications" style="animation-delay:0.2s">
+  <div class="wrap">
+    <p class="section-label">Peer-Reviewed Output</p>
+    <h2 class="section-title">Publication</h2>
+    <div class="pub-card">
+      <div class="pub-num">01</div>
+      <div class="pub-content">
+        <cite>Development of Fortified Snack Bar from <em>Gracilaria salicornia</em> (Dawson, 1954)</cite>
+        <p class="pub-journal">
+          Barranco, A.A., Broce, M.M., Lobo, H.D., Hontiveros, G.S., Fagutao, F.F., &amp; Besoña, J.F. (2025).
+          <strong>Food Research</strong>, 9(6), 196–205.
+        </p>
+        <a href="https://doi.org/10.26656/fr.2017.9(6).290" target="_blank" rel="noopener">
+          doi:10.26656/fr.2017.9(6).290 ↗
+        </a>
+      </div>
+      <img src="pub1.png" alt="Publication 1" style="width:110px;height:80px;object-fit:cover;border-radius:3px;border:1px solid var(--rule);flex-shrink:0;align-self:start;"/>
+    </div>
+    <div class="pub-card" style="margin-top:1.25rem">
+      <div class="pub-num">02</div>
+      <div class="pub-content">
+        <cite>GIS-Based Modelling and Multi-Criteria Evaluation for the Suitability Assessment of Green Mussel Aquaculture Expansion in Tagabuli Bay, Southeastern Mindanao</cite>
+        <p class="pub-journal">
+          Barranco, A.L.A., Broce, M.M., Lobo, H.D., Malinao, R., Taka, H., Baldevieso, A.A.G., Uba, K.I.N., Pedroso, F.L., &amp; Fagutao, F.F. (2026).
+          <strong>Thalassas: An International Journal of Marine Sciences</strong>, 42, 86.
+        </p>
+        <a href="https://doi.org/10.1007/s41208-026-01107-2" target="_blank" rel="noopener">
+          doi:10.1007/s41208-026-01107-2 ↗
+        </a>
+      </div>
+      <img src="pub2.png" alt="Publication 2" style="width:110px;height:80px;object-fit:cover;border-radius:3px;border:1px solid var(--rule);flex-shrink:0;align-self:start;"/>
+    </div>
+    <p style="font-size:0.87rem; color:var(--muted); margin-top:1.25rem; font-style:italic;">
+      Manuscripts in preparation — phytoplankton community dynamics &amp; water quality assessment at Tagabuli Bay.
+    </p>
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- CV -->
+<section id="cv" style="animation-delay:0.25s">
+  <div class="wrap">
+    <p class="section-label">Curriculum Vitae</p>
+    <h2 class="section-title">Education &amp; Experience</h2>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-year">2026 –</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <p class="tl-inst">VLIR-UOS Scholarship · Belgium</p>
+          <h3>MS Marine and Lacustrine Science and Management</h3>
+          <p>Vrije Universiteit Brussel · Universiteit Antwerpen · Universiteit Ghent. 2026–2028.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Aug 2025 –</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <p class="tl-inst">MSU Naawan · CFMS</p>
+          <h3>Faculty – Assistant Lecturer</h3>
+          <p>Department of Fisheries Technology (DFT), College of Fisheries and Marine Sciences. Teaching fisheries courses and supervising undergraduate research.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Oct 2024 –</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <p class="tl-inst">iAQUA · DOST-PCAARRD</p>
+          <h3>Project Technical Assistant I</h3>
+          <p>Center for Innovative Aquaculture and Sustainable Marine Resources Research (iAQUA), MSU Naawan, in collaboration with DOST-PCAARRD.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2020 – 2024</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <p class="tl-inst">Mindanao State University at Naawan</p>
+          <h3>Bachelor of Science in Fisheries</h3>
+          <p>CGPA: 1.254 · BFAR Region 12 FILG Scholar (2020–2024)</p>
+          <span class="honor">🏅 Magna Cum Laude</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2016 – 2020</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <p class="tl-inst">Kidapawan City National High School</p>
+          <h3>Senior High School — STEM</h3>
+          <p>GWA: 93.0%</p>
+          <span class="honor">With Honor</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2014 – 2018</div>
+        <div class="tl-spine"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <p class="tl-inst">Calunasan High School</p>
+          <h3>Junior High School</h3>
+          <p>GWA: 90%</p>
+          <span class="honor">With Honor</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFERENCES -->
+    <p class="section-label" style="margin-top:2.5rem; margin-bottom:1rem">Conferences &amp; Symposia</p>
+    <div style="display:flex; flex-direction:column; gap:0.75rem;">
+      <div class="about-block" style="padding:1rem 1.25rem;">
+        <h3 style="font-size:0.95rem; margin-bottom:0.3rem">5th International Conference in the West Philippine Sea (ICWPS)</h3>
+        <p>Oral presenter, non-competing. Puerto Princesa City, Palawan, Philippines.</p>
+      </div>
+      <div class="about-block" style="padding:1rem 1.25rem;">
+        <h3 style="font-size:0.95rem; margin-bottom:0.3rem">2nd Philippine Small Scale Fisheries National Symposium (PSSF-NS)</h3>
+        <p>Oral presenter, non-competing. International Convention Center, MSU Main Campus, Marawi City.</p>
+      </div>
+      <div class="about-block" style="padding:1rem 1.25rem; border-left: 3px solid var(--gold);">
+        <h3 style="font-size:0.95rem; margin-bottom:0.3rem">SINAG 2025 — Shared Initiatives and Nurturing Achievements and Goals</h3>
+        <p>Oral presenter, competing. MSU Naawan, Naawan, Misamis Oriental.
+        <span class="honor" style="margin-left:0.5rem">🥈 2nd Place — Ongoing Research Category</span></p>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <p class="section-label" style="margin-top:2.75rem; margin-bottom:1rem">Technical Skills</p>
+    <div class="skills-grid">
+      <div class="skill-block">
+        <h4>Software &amp; Tools</h4>
+        <ul class="skill-list">
+          <li>R Studio / R Programming</li>
+          <li>Shiny (interactive apps)</li>
+          <li>QGIS (spatial analysis)</li>
+          <li>Visual Studio Code</li>
+          <li>Microsoft Suite / Google Workspace</li>
+          <li>Canva</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h4>Research Techniques</h4>
+        <ul class="skill-list">
+          <li>Field sampling &amp; water quality assessment</li>
+          <li>Phytoplankton analysis</li>
+          <li>GIS suitability &amp; remote sensing (NDVI, LULC)</li>
+          <li>Nutrient budget simulations</li>
+          <li>Descriptive, inferential &amp; post-hoc analysis</li>
+          <li>Machine learning &amp; systematic literature review</li>
+        </ul>
+      </div>
+      <div class="skill-block">
+        <h4>Scholarships &amp; Training</h4>
+        <ul class="skill-list">
+          <li>VLIR-UOS Scholar (2026–2028)</li>
+          <li>FILG Scholar, BFAR Region 12 (2020–2024)</li>
+          <li>DTI × Google Career Certification (2024)</li>
+          <li>Data Engineering Pilipinas × Datacamp</li>
+          <li>R, Python, ML, Shiny (online coursework)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AWARDS -->
+    <p class="section-label" style="margin-top:2.75rem; margin-bottom:1rem">Awards &amp; Recognition</p>
+    <div class="awards-grid">
+      <div class="award-item">
+        <span class="award-icon">🏆</span>
+        <div><div class="award-name">CHED UniFAST Academic Excellence Award</div><div class="award-year">2024</div></div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🌊</span>
+        <div><div class="award-name">Domiciano K. Villaluz University Leadership Award</div><div class="award-year">2024</div></div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🎓</span>
+        <div><div class="award-name">University Student Leadership Award</div><div class="award-year">2024</div></div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🔬</span>
+        <div><div class="award-name">Science Leadership Award — MSUN-FSTDI</div><div class="award-year">2024</div></div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">⚔️</span>
+        <div><div class="award-name">Kampilan Leadership Award — MSU System</div><div class="award-year">2024</div></div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🤝</span>
+        <div><div class="award-name">Supreme Student Council Service Award</div><div class="award-year">2024</div></div>
+      </div>
+      <div class="award-item">
+        <span class="award-icon">🗣️</span>
+        <div><div class="award-name">Debater Award</div><div class="award-year">2024</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule"/>
+
+<!-- GALLERY -->
+<section id="gallery" style="animation-delay:0.28s">
+  <div class="wrap">
+    <p class="section-label">Maps &amp; Field Photos</p>
+    <h2 class="section-title">Gallery</h2>
+
+    <div class="gallery-filters">
+      <button class="filter-btn active" onclick="filterGallery('all', this)">All</button>
+      <button class="filter-btn" onclick="filterGallery('maps', this)">QGIS Maps</button>
+      <button class="filter-btn" onclick="filterGallery('field', this)">Field Photos</button>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+
+      <div class="gallery-item" data-cat="maps" onclick="openLightbox(this)">
+        <img src="map-aspect.png" alt="Aspect Map of Naawan"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">QGIS Map</span>
+            Aspect Map — Municipality of Naawan
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="maps" onclick="openLightbox(this)">
+        <img src="map-bathymetry.png" alt="Bathymetry of Palua Archipelago"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">QGIS Map</span>
+            Hillshade &amp; Bathymetry — Palua Archipelago
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="maps" onclick="openLightbox(this)">
+        <img src="map-buildings.png" alt="Building Footprints Misamis Oriental"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">QGIS Map</span>
+            Building Footprints — Misamis Oriental
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="maps" onclick="openLightbox(this)">
+        <img src="map-contour.png" alt="Slope Map of Naawan"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">QGIS Map</span>
+            Slope Map — Municipality of Naawan
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="maps" onclick="openLightbox(this)">
+        <img src="map-hospitals.png" alt="Hospital Accessibility Cagayan de Oro"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">QGIS Map</span>
+            Hospital Accessibility — Cagayan de Oro City
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="maps" onclick="openLightbox(this)">
+        <img src="map-ndvi.png" alt="NDVI Province of Siquijor"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">QGIS Map</span>
+            NDVI — Province of Siquijor
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="maps" onclick="openLightbox(this)">
+        <img src="map-nipponense.png" alt="Macrobrachium nipponense Distribution"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">QGIS Map</span>
+            <em>M. nipponense</em> Presence — Mindanao Marshes
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="maps" onclick="openLightbox(this)">
+        <img src="map-terrain.png" alt="Terrain Ruggedness Index Naawan"/>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">QGIS Map</span>
+            Terrain Ruggedness Index — Municipality of Naawan
+          </div>
+        </div>
+      </div>
+
+      <!-- Field photo placeholders — upload your field photos and replace these -->
+      <div class="gallery-item" data-cat="field" onclick="openLightbox(this)">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">📷</span>
+          <span class="ph-label">Upload a field photo<br>(e.g. field-sampling.jpg)</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">Field Photo</span>
+            Water Quality Sampling — Tagabuli Bay
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item" data-cat="field" onclick="openLightbox(this)">
+        <div class="gallery-placeholder">
+          <span class="ph-icon">📷</span>
+          <span class="ph-label">Upload a field photo<br>(e.g. field-mussel.jpg)</span>
+        </div>
+        <div class="gallery-overlay">
+          <div class="gallery-overlay-text">
+            <span class="gallery-overlay-tag">Field Photo</span>
+            Green Mussel Sampling — Tagabuli Bay
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt=""/>
+  <p class="lightbox-caption" id="lightboxCaption"></p>
+</div>
+
+<hr class="rule"/>
+
+<!-- CONTACT -->
+<section id="contact" style="animation-delay:0.3s">
+  <div class="wrap">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>I welcome collaborations in coastal fisheries research, aquaculture systems, and science
+        communication. Feel free to reach out for research inquiries, speaking engagements, or
+        institutional visits.</p>
+        <div class="contact-links">
+          <a class="contact-link" href="#">
+            <span class="contact-icon">🏫</span>
+            MSU Naawan, Naawan, Misamis Oriental, Philippines
+          </a>
+          <a class="contact-link" href="mailto:aljhunlloyd.barranco@msunaawan.edu.ph">
+            <span class="contact-icon">✉️</span>
+            aljhunlloyd.barranco@msunaawan.edu.ph
+          </a>
+          <a class="contact-link" href="tel:+639684107512">
+            <span class="contact-icon">📞</span>
+            0968-410-7512
+          </a>
+          <a class="contact-link" href="https://www.researchgate.net/profile/Aljhun-Lloyd-Barranco?ev=hdr_xprf" target="_blank" rel="noopener">
+            <span class="contact-icon">🔗</span>
+            ResearchGate
+          </a>
+          <a class="contact-link" href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=rKgtE7gAAAAJ" target="_blank" rel="noopener">
+            <span class="contact-icon">📘</span>
+            Google Scholar
+          </a>
+          <a class="contact-link" href="https://orcid.org/0009-0001-8617-6175" target="_blank" rel="noopener">
+            <span class="contact-icon">🆔</span>
+            ORCID: 0009-0001-8617-6175
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/aljhun-lloyd-barranco-1b3331307/" target="_blank" rel="noopener">
+            <span class="contact-icon">💼</span>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="contact-form">
+        <input type="text" placeholder="Your name"/>
+        <input type="email" placeholder="Email address"/>
+        <input type="text" placeholder="Subject"/>
+        <textarea placeholder="Your message…"></textarea>
+        <button class="btn btn-primary" style="width:fit-content"
+          onclick="alert('Connect this form to Formspree.io to receive messages by email.')">
+          Send Message
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <footer>
+    <span>© 2026 Aljhun Lloyd A. Barranco, RFP · MSU Naawan</span>
+    <span>
+      <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=rKgtE7gAAAAJ" target="_blank">Google Scholar</a> ·
+      <a href="https://www.researchgate.net/profile/Aljhun-Lloyd-Barranco?ev=hdr_xprf" target="_blank">ResearchGate</a> ·
+      <a href="https://orcid.org/0009-0001-8617-6175" target="_blank">ORCID</a> ·
+      <a href="https://www.linkedin.com/in/aljhun-lloyd-barranco-1b3331307/" target="_blank">LinkedIn</a>
+    </span>
+  </footer>
+</div>
+
+<script>
+  // Gallery filter
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.style.display = (cat === 'all' || item.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+
+  // Lightbox
+  function openLightbox(item) {
+    const img = item.querySelector('img');
+    if (!img) return; // placeholder — no image yet
+    const caption = item.querySelector('.gallery-overlay-text')?.innerText || '';
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightboxCaption').textContent = caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox') &&
+        !e.target.classList.contains('lightbox-close')) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox({target: document.getElementById('lightbox')}); });
+</script>
+</body>
+</html>
+
