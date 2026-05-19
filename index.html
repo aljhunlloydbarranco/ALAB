@@ -1198,27 +1198,21 @@
 
         </div>
 
-        <form class="contact-form">
-
-          <input type="text" placeholder="Your Name">
-
-          <input type="email" placeholder="Email Address">
-
-          <input type="text" placeholder="Subject">
-
-          <textarea placeholder="Message"></textarea>
-
-          <button class="btn btn-primary" type="submit">
-            Send Message
-          </button>
-
         <form 
   class="contact-form"
   action="https://formspree.io/f/mnjrnkqe"
   method="POST"
 >
 
-  <input type="hidden" name="_gotcha" style="display:none">
+  <!-- Spam Protection -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <!-- Custom Email Subject -->
+  <input 
+    type="hidden" 
+    name="_subject" 
+    value="New Message from Portfolio Website"
+  >
 
   <input 
     type="text" 
